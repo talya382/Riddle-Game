@@ -10,3 +10,32 @@
 //    - save the end time (Date.now())
 //    - save the time using player.recordTime()
 // 5. After the loop, call player.showStats() to show total time and average time per riddle.
+
+import PromptSync from "prompt-sync";
+import Player from "./classes/Player.js";
+import arrRiddle from "./riddles/index.js";
+import Riddle from "./classes/Riddle.js";
+import MultipleChoiceRiddle from "./classes/MultipleChoiceRiddle.js";
+
+const prompt = PromptSync();
+
+console.log("welcome let's start play ");
+const name = prompt("What is your name?");
+
+const player = new Player(name);
+console.log(`Hellow ${player.name} let's start`);
+
+for(const r of arrRiddle ){
+    const startTime=Date.now();
+    const riddle=new MultipleChoiceRiddle(
+        r.id,
+        r.name,
+        r.taskDescription,
+        r.correctAnswer,
+        r.choices
+)
+riddle.ask(prompt)
+const end=Date.now();
+   player.recordTime(startTime, end) 
+}
+player.showStats();
