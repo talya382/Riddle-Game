@@ -10,6 +10,7 @@ export default {
   name: "Number Sequence",
   taskDescription: "What comes next? 2, 4, 8, 16, ...",
   correctAnswer: "3",
-    choices: ["6", "7", "32", "9"],
-
+  choices: ["6", "7", "32", "9"],
+  level: "easy",
+  limeLimit: 10,
 };

@@ -24,18 +24,40 @@ const name = prompt("What is your name?");
 
 const player = new Player(name);
 console.log(`Hellow ${player.name} let's start`);
-
-for(const r of arrRiddle ){
-    const startTime=Date.now();
-    const riddle=new MultipleChoiceRiddle(
-        r.id,
-        r.name,
-        r.taskDescription,
-        r.correctAnswer,
-        r.choices
-)
-riddle.ask(prompt)
-const end=Date.now();
-   player.recordTime(startTime, end) 
+const validLevels = ["easy", "medium", "hard"];
+let level = prompt("Choose difficulty: easy / medium / hard: ");
+while (!validLevels.includes(level)) {
+  console.log("Invalid level, try again.");
+  level = prompt("Choose difficulty: easy / medium / hard: ");
+}
+const filteredRiddles = [];
+for (const r of arrRiddle) {
+  if (r.level === level) filteredRiddles.push(r);
+}
+console.log("You chose " + level);
+console.log("Number of riddles: " + filteredRiddles.length);
+filteredRiddles.sort(() => Math.random() - 0.5);
+const PENALTY_SECONDS = 5;
+for (const r of filteredRiddles) {
+  const startTime = Date.now();
+  const riddle = new MultipleChoiceRiddle(
+    r.id,
+    r.name,
+    r.taskDescription,
+    r.correctAnswer,
+    r.choices,
+    r.hint,
+  );
+  const hintPenaltySeconds = riddle.ask(prompt);
+  const end = Date.now();
+  const secondsTaken = (end - startTime) / 1000;
+  let penaltySeconds = hintPenaltySeconds;
+  if (secondsTaken > r.limeLimit) {
+    console.log(`Too slow! ${PENALTY_SECONDS} seconds penalty applied.`);
+    penaltySeconds += PENALTY_SECONDS;
+  } else {
+    console.log(`yow did it ${secondsTaken}s`);
+  }
+  player.recordTime(startTime, end + penaltySeconds * 1000);
 }
 player.showStats();

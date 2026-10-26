@@ -11,5 +11,8 @@ export default {
   taskDescription: "What is (200 / 2)+2?",
   correctAnswer: "3",
     choices: ["100", "7", "102", "9"],
+    level:"hard",
+    limeLimit: 30,
 
-};
+
+}

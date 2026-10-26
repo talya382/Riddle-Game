@@ -10,6 +10,8 @@ export default {
   name: "Easy Math",
   taskDescription: "What is 5 + 3?",
   correctAnswer: "3",
-   choices: ["6", "7", "8", "9"],
-
+  choices: ["6", "7", "8", "9"],
+  level: "easy",
+  limeLimit: 10,
+  hint:"Count on your fingers: 5, then 3 more.",
 };

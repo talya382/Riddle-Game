@@ -9,6 +9,7 @@ export default {
   name: "Colors",
   taskDescription: "What the color do yo mix blue and yellow?",
   correctAnswer: "3",
-    choices: ["blue", "yellow", "green", "black"],
-
+  choices: ["blue", "yellow", "green", "black"],
+  level: "easy",
+  limeLimit: 10,
 };
