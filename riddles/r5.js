@@ -11,6 +11,6 @@ export default {
   taskDescription: "What comes next? 2, 4, 8, 16, ...",
   correctAnswer: "3",
   choices: ["6", "7", "32", "9"],
-  level: "easy",
+  difficulty: "easy",
   limeLimit: 10,
 };

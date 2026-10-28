@@ -32,7 +32,7 @@ while (!validLevels.includes(level)) {
 }
 const filteredRiddles = [];
 for (const r of arrRiddle) {
-  if (r.level === level) filteredRiddles.push(r);
+  if (r.difficulty === level) filteredRiddles.push(r);
 }
 console.log("You chose " + level);
 console.log("Number of riddles: " + filteredRiddles.length);
